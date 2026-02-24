@@ -17,6 +17,7 @@ class Item extends Model
         'description',
         'brand',
         'user_id',
+        'status_id'
     ];
     public function user()
     {
@@ -36,5 +37,10 @@ class Item extends Model
     public function favoritedUsers()
     {
         return $this->belongsToMany(User::class, 'favorites');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }

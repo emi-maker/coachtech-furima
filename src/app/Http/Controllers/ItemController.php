@@ -6,7 +6,9 @@ use App\Models\Item;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ItemController extends Controller
 {
@@ -52,15 +54,37 @@ class ItemController extends Controller
 
         $item = Item::create([
             'name' => $request->name,
-            'img' => $request->img,
             'price' => $request->price,
             'description' => $request->description,
             'brand' => $request->brand,
             'user_id' => auth()->id(),
+            'status_id' => $request->status_id,
     ]);
-
+        //カテゴリー紐づけ
         if ($request->has('categories')) {
-        $item->categories()->attach($request->categories);
+            $item->categories()->attach($request->categories);
+    }
+
+        // 画像追加
+        if ($request->hasFile('img')) {
+
+        $uplodeedImage = $request->file('img');
+
+        $filename = uniqid() . '.jpg';
+
+        $manager = new ImageManager(new Driver());
+
+        $image = $manager->read($uplodeedImage)
+        ->scale(width: 1200)
+        ->toJpeg(80);
+
+        Storage::disk('public')->put(
+        'items/' . $filename,
+        (string) $image
+        );
+
+        $item->img = 'items/' . $filename;
+        $item->save();
     }
 
         return redirect('/');

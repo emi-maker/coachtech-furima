@@ -1,0 +1,155 @@
+.item-detail {
+  display: flex;
+  gap: 40px;
+  margin-top: 60px;
+  padding: 0 60px;
+}
+
+.image-dummy {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #eee;
+  border-radius: 8px;
+}
+
+.item-info {
+  width: 50%;
+}
+
+.item-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-brand {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.item-price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.item-description-block {
+  margin-top: 30px;
+}
+
+.item-description {
+  line-height: 1.6;
+}
+
+.item-image  img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.tax {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.item-actions img {
+  width: 24px;
+  cursor: pointer;
+} 
+
+.buy-button {
+  display: block;
+  margin-top: 30px;
+  background-color: #ff4d4d;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.item-comment-block {
+  margin-top: 60px;
+}
+
+.comment-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.comment-item {
+  margin-bottom: 30px;
+}
+
+.comment-user-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.comment-content {
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.comment-form-area {
+  margin-top: 30px;
+}
+
+.comment-form-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.comment-textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.comment-submit {
+  width: 100%;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 15px 0;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.favorite-area,
+.comment-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorite-count {
+    font-size: 14px;
+    margin-top: 4px;
+}

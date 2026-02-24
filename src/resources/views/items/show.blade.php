@@ -7,11 +7,16 @@
 @section('content')
 <div class="item-detail">
     <div class="item-image">
-        <img src="{{ $item->img }}" alt="商品画像">
+        @if (str_starts_with($item->img, 'http'))
+        <img src="{{ $item->img }}">
+        @else
+        <img src="{{ asset('storage/' . $item->img) }}">
+        @endif
     </div>
 
     <div class="item-info">
         <h1 class="item-name">{{ $item->name }}</h1>
+        <p>{{ $item->brand }}</p>
         <P class="item-price">¥{{ $item->price }}<span class="tax">（税込）</span></P>
         <div class="reaction-area">
             <div class="item-actions">
@@ -54,6 +59,18 @@
             <!-- ③ 商品情報 -->
             <div class="item-info-block">
                 <h2>商品情報</h2>
+
+                <p>
+                    <strong>カテゴリー：</strong>
+                    @foreach($item->categories as $category)
+                    <span>{{ $category->content }}</span>
+                    @endforeach
+                </p>
+
+                <p>
+                    <strong>商品の状態：</strong>
+                    {{ optional($item->status)->content }}
+                </p>
             </div>
 
             <!-- ④ コメント -->
@@ -76,11 +93,10 @@
                 <!-- 入力エリア -->
                 <div class="comment-form-area">
                     <h3 class="comment-form-title">商品へのコメント</h3>
-                    <form action="{{ route('comments.store', $item->id) }}" 
-                    method="POST">
-                    @csrf
-                    <textarea name="content" class="comment-textarea" rows="5"></textarea>
-                    <button type="submit" class="comment-submit">コメントを送信する</button>
+                    <form action="{{ route('comments.store', $item->id) }}" method="POST">
+                        @csrf
+                        <textarea name="content" class="comment-textarea" rows="5"></textarea>
+                        <button type="submit" class="comment-submit">コメントを送信する</button>
                     </form>
                 </div>
 

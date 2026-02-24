@@ -61,6 +61,6 @@ Route::middleware('auth')->group(function () {
     ->name('mypage.profile.edit');
 
     // 更新処理
-    Route::patch('/mypage/profile', [MypageController::class, 'update'])
-    ->name('mypage.profile.update');
+    Route::patch('/mypage/edit', [MypageController::class, 'update'])
+    ->name('mypage.update');
 });

@@ -1,0 +1,147 @@
+.sell-wrapper {
+  width: 700px;
+  margin: 80px auto;
+  padding: 40px;
+}
+
+.sell-wrapper .form-group label {
+  display: block;   /* ← これで下に落ちる */
+  margin-bottom: 8px;
+}
+
+.sell-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.sell-section {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.select-box {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.select-box:focus {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.section-border {
+  color: #666;
+  border-bottom: 2px solid #666;
+}
+
+.image-upload-area {
+  height: 150px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5c5c;
+
+}
+
+.image-upload-inner {
+  padding: 8px 24px;
+  border:2px solid #ff5c5c;
+  border-radius: 6px;
+  color: #ff5c5c;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.image-upload-inner:hover {
+  background-color: #ff5656;
+  color: white;
+}
+
+.sell-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff5c5c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+.price-input {
+  display: flex;
+  align-items: center;
+}
+
+.price-input span {
+  margin-right: 5px;
+}
+
+.category-label input:checked + span {
+  background-color: red;
+  color: white;
+}
+
+.category-row > label {
+  width: 120px;
+  flex-shrink: 0;
+  line-height: 3;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.category-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.category-label input {
+  display: none; /* チェックボックス消す */
+}
+
+.category-label span {
+  border: 2px solid #ff5656;
+  color: #ff5656;
+  padding: 6px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* 押されたとき */
+.category-label input:checked + span {
+  background-color: #ff5656;
+  color: white;
+}
+
