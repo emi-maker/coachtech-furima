@@ -25,7 +25,7 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-
+        //タブ
         if ($request->tab === 'mylist' && auth()->check()) {
 
         $items = Item::withCount('favoritedUsers')

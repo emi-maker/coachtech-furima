@@ -79,7 +79,9 @@
                 @foreach($item->comments as $comment)
                 <div class="comment-item">
                     <div class="comment-user-area">
-                        <div class="user-icon"></div>
+                        <div class="user-icon">
+                        <img src="{{ asset('storage/' . $comment->user->profile_image) }}">
+                        </div>
                         <span class="user-name">
                             {{ $comment->user->name ?? 'ユーザー' }}
                         </span>

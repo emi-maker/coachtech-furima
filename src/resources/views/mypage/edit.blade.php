@@ -4,28 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
 
-@section('content')
-<div class="mypage-card">
-    <h1>プロフィール設定</h1>
-
-    <form method="POST" action="/mypage/edit" enctype="multipart/form-data">
-        @csrf
-        @method('PATCH')
-
-        <div class="profile-image-area">
-
-            <div class="profile-image-circle">
-                @if($user->profile_image)
-                    <img src="{{ asset('storage/' . $user->profile_image) }}"class="profile-image">
-                @endif
-            </div>
-
-            <label class="image-select-btn">
-                画像を選択する
-                <input type="file" name="profile_image" hidden>
-            </label>
-        </div>
-        
+<a href="{{ url('/item/' . $item->id) }}" class="card-link">
         <div class="form-group">
             <label>ユーザー名</label>
             <input type="text" name="name" value="{{ $user->name }}">

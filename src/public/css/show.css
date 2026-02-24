@@ -99,8 +99,14 @@
 .user-icon {
   width: 40px;
   height: 40px;
-  background-color: #ddd;
   border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-name {
