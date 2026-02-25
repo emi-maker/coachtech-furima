@@ -17,7 +17,6 @@ class MypageController extends Controller
     // 更新処理
     public function update(Request $request)
     {
-
         $user = auth()->user();
         /** @var \App\Models\User $user */
         $user = auth()->user();

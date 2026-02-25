@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Item;
 class ItemsTableSeeder extends Seeder
 {
     /**
@@ -22,6 +22,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => 'Rolax',
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+            'status_id' => 1,
+            'categories' => [1,2],
         ],
         [
             'user_id' => 1,
@@ -30,6 +32,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => '西芝',
             'description' => '高速で信頼性の高いハードディスク',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+            'status_id' => 2,
+            'categories' => [3],
         ],
         [
             'user_id' => 2,
@@ -38,6 +42,7 @@ class ItemsTableSeeder extends Seeder
             'brand' => 'なし',
             'description' => '新鮮な玉ねぎ３束セット',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+            'status_id' => 3,
         ],
         [
             'user_id' => 1,
@@ -46,6 +51,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => '',
             'description' => 'クラッシックなデザインの革靴',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+            'status_id' => 4,
+            'categories' => [1,2],
         ],
         [   
             'user_id' => 1,
@@ -54,6 +61,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => '',
             'description' => '高性能なノートパソコン',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+            'status_id' => 1,
+            'categories' => [3],
         ],
         [
             'user_id' => 1,
@@ -62,6 +71,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => 'なし',
             'description' => '高音質のレコーディング用マイク',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+            'status_id' => 2,
+            'categories' => [3],
         ],
         [
             'user_id' => 1,
@@ -70,6 +81,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => '',
             'description' => 'おしゃれなショルダーバッグ',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+            'status_id' => 3,
+            'categories' => [1,4],
         ],
         [
             'user_id' => 1,
@@ -78,6 +91,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => 'なし',
             'description' => '使いやすいタンブラー',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+            'status_id' => 4,
+            'categories' => [10],
         ],
         [
             'user_id' => 1,
@@ -86,6 +101,8 @@ class ItemsTableSeeder extends Seeder
             'brand' => 'Starbacks',
             'description' => '手動のコーヒーミル',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+            'status_id' => 1,
+            'categories' => [10],
         ],
         [
             'user_id' => 1,
@@ -94,10 +111,21 @@ class ItemsTableSeeder extends Seeder
             'brand' => '',
             'description' => '便利なメイクアップセット',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
-        ],
-    ];    
+            'status_id' => 2,
+            'categories' => [6],
+        ]
+        ];    
         
-    DB::table('items')->insert($items);
-       
+        foreach ($items as $itemData) {
+
+            $categories = $itemData['categories']?? []; // カテゴリ取得
+            unset($itemData['categories']);        // itemsテーブルに不要なので削除
+
+            $item = Item::create($itemData);       // 商品作成
+
+            if (!empty($categories)) {
+            $item->categories()->attach($categories); // カテゴリ接続
+            }
+        }
     }
 }

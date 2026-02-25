@@ -16,8 +16,7 @@ class AddStatusIdToItemsTable extends Migration
         Schema::table('items', function (Blueprint $table) {
             $table->foreignId('status_id')
             ->nullable()
-            ->constrained()
-            ->onDelete('cascade');
+            ->constrained();
         });
     }
 
