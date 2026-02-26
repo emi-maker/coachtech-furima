@@ -95,3 +95,57 @@
     align-items: center;
     gap: 20px;
 }
+
+.card-image img {
+    width: 100%;
+    height: 200px;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.card {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.col-md-3 {
+    margin-bottom: 20px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.tab-menu {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    padding-left: 30px;
+}
+
+.tab {
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 10px;
+}
+
+.tab.active {
+    color: red;
+    border-bottom: 3px solid red;
+    font-weight: bold;
+
+}
+
+.header a:not(.header__sell-button) {
+    color: white;
+}

@@ -19,10 +19,12 @@
     
         {{-- 現在のプロフィール画像 --}}
         <div class="profile-image-area">
-            <img src="{{ asset('storage/' . $user->profile_image) }}" class="profile-image">
-    
-            {{-- 画像変更 --}}
+                <div class="profile-image-circle">
+                    <img src="{{ asset('storage/' . $user->profile_image) }}" class="profile-image">
+                </div>
             <label class="image-select-btn">
+                画像を選択する
+            {{-- 画像変更 --}}
                 <input type="file" name="profile_image" hidden>
             </label>
         </div>

@@ -36,15 +36,27 @@ class MypageController extends Controller
         $user->save();
     }
 
-        return redirect()->route('mypage');
+        return redirect('/');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $user = auth()->user();
+    $user = auth()->user();
 
-        $items = $user->items; // ← 出品した商品取得
+    // 今どのタブ？
+    $tab = $request->tab ?? 'sell';
 
-        return view('mypage.index', compact('user' , 'items'));
+    // 出品した商品
+    $sellItems = $user->items;
+
+    // 購入した商品
+    $buyItems = \App\Models\Item::where('buyer_id', $user->id)->get();
+
+    return view('mypage.index', compact(
+        'user',
+        'tab',
+        'sellItems',
+        'buyItems'
+    ));
     }
 }

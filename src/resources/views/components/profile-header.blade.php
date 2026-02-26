@@ -11,10 +11,8 @@
 
     </div>
 
-    <label for="imageInput" class="image-select-btn">
-        画像を選択する
-    </label>
+    <a href="{{ route('mypage.profile.edit') }}" class="image-select-btn">
+    プロフィールを編集する
+    </a>
     
     </div>
-    
-    <input type="file" name="profile_image" id="imageInput" hidden>
