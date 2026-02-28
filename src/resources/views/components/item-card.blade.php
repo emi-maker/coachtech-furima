@@ -1,21 +1,25 @@
-<a href="{{ url('/item/' . $item->id) }}" class="card-link">
+<div class="card">
 
-    <div class="card-image">
-        @if($item->img)
-        @if(str_starts_with($item->img, 'http'))
-        <img src="{{ $item->img }}">
-        @else
-        <img src="{{ asset('storage/' . $item->img) }}">
-        @endif
-        @endif
+    <a href="{{ url('/item/' . $item->id) }}" class="card-link">
 
-        @if($item->buyer_id)
-        <span class="sold-label">Sold</span>
-        @endif
-    </div>
+        <div class="card-image">
+            @if($item->img)
+            @if(str_starts_with($item->img, 'http'))
+            <img src="{{ $item->img }}">
+            @else
+            <img src="{{ asset('storage/' . $item->img) }}">
+            @endif
+            @endif
 
-    <div class="card-name">
-        {{ $item->name }}
-    </div>
+            @if($item->buyer_id)
+            <span class="sold-label">Sold</span>
+            @endif
+        </div>
 
-</a>
+        <div class="card-name">
+            {{ $item->name }}
+        </div>
+
+    </a>
+
+</div>

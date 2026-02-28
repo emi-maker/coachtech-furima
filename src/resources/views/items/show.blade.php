@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="buy-button">
-                購入手続きへ
+            <a href="{{ route('purchase.create', $item->id) }}">
+                購入手続き
             </a>
             <!-- ② 商品説明 -->
             <div class="item-description-block">

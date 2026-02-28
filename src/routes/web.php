@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PurchaseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,4 +63,29 @@ Route::middleware('auth')->group(function () {
 
     // 更新処理
     Route::patch('/mypage/update', [MypageController::class, 'update']);
+
+    // 購入画面表示
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])
+    ->name('purchase.create');
+
+    Route::post('/purchase', [PurchaseController::class, 'store'])
+    ->name('purchase.store');
+
+    //購入ボタン
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
+    ->name('purchase.store');
+
+    //住所・変更
+    Route::get('/purchase/{item}/address', [PurchaseController::class, 'editAddress'])
+    ->name('purchase.address.edit');
+
+    Route::post('/purchase/{item}/address', [PurchaseController::class, 'updateAddress'])
+    ->name('purchase.address.update');
+
+    Route::get('/purchase/{item}/address', [PurchaseController::class, 'editAddress'])
+    ->name('purchase.address.edit');
+
+    //更新
+    Route::post('/purchase/{item}/address', [PurchaseController::class, 'updateAddress'])
+    ->name('purchase.address.update');
 });

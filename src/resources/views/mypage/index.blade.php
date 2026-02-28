@@ -10,41 +10,78 @@
 
     @include('components.profile-header')
 
-    <div class="mypage-container">
-
-        <div class="tab-menu">
-            <a href="{{ route('mypage', ['tab' => 'sell']) }}" class="{{ $tab === 'sell' ? 'active-tab' : '' }}">
+    <div class="tab-menu">
+        <a href="{{ route('mypage', ['tab' => 'sell']) }}" class="mypage-tab {{ $tab === 'sell' ? 'active' : '' }}">
             出品した商品
         </a>
-        
-        <a href="{{ route('mypage', ['tab' => 'buy']) }}" class="{{ $tab === 'buy' ? 'active-tab' : '' }}">
+
+        <a href="{{ route('mypage', ['tab' => 'buy']) }}" class="mypage-tab {{ $tab === 'buy' ? 'active' : '' }}">
             購入した商品
         </a>
     </div>
-    {{-- ★表示エリア --}}
+
     <div class="tab-content">
+
         @if($tab === 'sell')
-            <div class="row">
-                @foreach($sellItems as $item)
-                    <div class="col-md-3">
-                    @include('components.item-card')
-                    </div>
-                @endforeach
-            </div>
-        @endif
-        
-        @if($tab === 'buy')
-        
         <div class="row">
-            @foreach($buyItems as $item)
-                <div class="col-md-3">
-                    @include('components.item-card')
+            @foreach($sellItems as $item)
+            <div class="col-md-3">
+                <div class="card">
+                    <a href="{{ url('/item/' . $item->id) }}" class="card-link">
+
+                        <div class="card-image">
+                            @if($item->img)
+                            @if(str_starts_with($item->img,'http'))
+                            <img src="{{ $item->img }}">
+                            @else
+                            <img src="{{ asset('storage/' . $item->img) }}">
+                            @endif
+                            @endif
+                        </div>
+
+                        <div class="card-body">
+                            <p>{{ $item->name }}</p>
+                        </div>
+
+                    </a>
                 </div>
+            </div>
             @endforeach
         </div>
         @endif
-    </div>    
-</div>
+
+
+        @if($tab === 'buy')
+        <div class="row">
+            @foreach($buyItems as $item)
+            <div class="col-md-3">
+                <div class="card">
+                    <a href="{{ url('/item/' . $item->id) }}" class="card-link">
+
+                        <div class="card-image">
+                            @if($item->img)
+
+                                @if(str_starts_with($item->img,'http'))
+                                    <img src="{{ $item->img }}">
+                                @else
+                                    <img src="{{ asset('storage/' . $item->img) }}">
+                                @endif
+
+                            @endif
+                        </div>
+
+                        <div class="card-body">
+                            <p>{{ $item->name }}</p>
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @endif
+
+    </div>
 
 </div>
 

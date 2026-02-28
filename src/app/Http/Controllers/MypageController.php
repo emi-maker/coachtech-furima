@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Purchase;
 
 class MypageController extends Controller
 {
@@ -41,22 +42,25 @@ class MypageController extends Controller
 
     public function index(Request $request)
     {
-    $user = auth()->user();
+        $user = auth()->user();
 
-    // 今どのタブ？
-    $tab = $request->tab ?? 'sell';
+        // 今どのタブ？
+        $tab = $request->tab ?? 'sell';
 
-    // 出品した商品
-    $sellItems = $user->items;
+        // 出品した商品
+        $sellItems = $user->items;
 
-    // 購入した商品
-    $buyItems = \App\Models\Item::where('buyer_id', $user->id)->get();
+        // 購入した商品
+        $buyItems = Purchase::where('user_id', $user->id)
+            ->with('item')
+            ->get()
+            ->pluck('item');
 
-    return view('mypage.index', compact(
-        'user',
-        'tab',
-        'sellItems',
-        'buyItems'
-    ));
+        return view('mypage.index', compact(
+            'user',
+            'tab',
+            'sellItems',
+            'buyItems'
+        ));
     }
 }

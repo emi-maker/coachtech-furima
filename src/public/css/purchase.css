@@ -1,0 +1,87 @@
+.purchase-container {
+    display: flex;
+    gap: 80px;
+    max-width: 1280px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.purchase-left {
+    flex: 3;
+    width: 100%;
+
+}
+
+.purchase-right {
+    flex: 2;
+    margin-left: auto;
+    min-width: 350px;
+}
+
+.summary-box {
+    border: 1px solid #000000;
+    padding: 24px;
+    width: 100%;
+    background-color: #fff;
+    
+}
+
+.purchase-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.purchase-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.purchase-image img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid #000000;
+}
+
+.purchase-info h2 {
+    margin: 0;
+}
+
+.purchase-section {
+    border-top: 1px solid #000;
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+.purchase-section label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.summary-box {
+    padding: 0;
+}
+
+.summary-row {
+    padding: 24px;
+}
+
+.summary-row + .summary-row {
+    border-top: 1px solid #000;
+}

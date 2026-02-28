@@ -7,11 +7,11 @@
 @section('content')
 <!--商品一覧/認証/未認証でも見れる -->
 <div class="tab-menu">
-    <a href="/" class="tab {{ request('tab') !== 'mylist' ? 'active' : '' }}">
+    <a href="/" class="item-tab {{ request('tab') !== 'mylist' ? 'active' : '' }}">
         おすすめ
     </a>
 
-    <a href="/?tab=mylist" class="tab {{ request('tab') === 'mylist' ? 'active' : '' }}">
+    <a href="/?tab=mylist" class="item-tab {{ request('tab') === 'mylist' ? 'active' : '' }}">
         マイリスト
     </a>
 </div>
