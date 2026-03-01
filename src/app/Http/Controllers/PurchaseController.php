@@ -16,24 +16,31 @@ class PurchaseController extends Controller
 
     public function store(Request $request)
     {
+        //購入履歴保存
         Purchase::create([
-        'user_id' => auth()->id(),
-        'item_id' => $request->item_id,
-        'payment_method' => $request->payment_method,
-    ]);
+            'user_id' => auth()->id(),
+            'item_id' => $request->item_id,
+            'payment_method' => $request->payment_method,
+        ]);
+
+        // 商品をSOLDにする
+            $item = Item::findOrFail($request->item_id);
+
+            $item->buyer_id = auth()->id();
+            $item->save();
 
         return redirect('/mypage');
     }
 
-    public function editAddress($itemId)
+    public function editAddress(Item $item)
     {
-        return view('purchase.address', compact('itemId'));
+        return view('purchase.address', compact('item'));
     }
 
     public function updateAddress(Request $request, $itemId)
     {
     session([
-        'shipping_postcode' => $request->postal_code,
+        'shipping_postcode' => $request->post_code,
         'shipping_address' => $request->address,
     ]);
 

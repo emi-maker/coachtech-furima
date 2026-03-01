@@ -1,13 +1,35 @@
-<h2>配送先変更</h2>
+@extends('layouts.app')
 
-<form method="POST" action="{{ route('purchase.address.update', $itemId) }}">
-    @csrf
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/address.css') }}">
+@endsection
 
-    <label>郵便番号</label>
-    <input type="text" name="postal_code">
+@section('content')
 
-    <label>住所</label>
-    <input type="text" name="address">
+<div class="address-container">
 
-    <button type="submit">変更する</button>
-</form>
+    <h1 class="address-title">住所変更</h1>
+
+    <form class= "addres-form" method="POST" action="{{ route('purchase.address.update', $item->id) }}">
+        @csrf
+        @method('PATCH') 
+
+        <div class="form-group">
+            <label class="form-label">郵便番号</label>
+            <input type="text" name="post_code" class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">住所</label>
+            <input type="text" name="address" class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">建物名</label>
+            <input type="text" name="building" class="form-input">
+        </div>
+
+        <button type="submit" class="address-button">変更する</button>
+    </form>
+</div>
+@endsection

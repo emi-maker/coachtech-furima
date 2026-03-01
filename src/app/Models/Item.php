@@ -17,8 +17,10 @@ class Item extends Model
         'description',
         'brand',
         'user_id',
-        'status_id'
+        'status_id',
+        'buyer_id'
     ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);

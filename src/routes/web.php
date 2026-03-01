@@ -33,14 +33,17 @@ Route::post('/login', [LoginController::class, 'store'])->name('login');
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{id}', [ItemController::class, 'show']);
 
-
 /*
 |--------------------------------------------------------------------------
 | Auth Routes（ログイン後だけ）
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    // マイページ
+    Route::get('/mypage', [MypageController::class, 'index'])
+        ->name('mypage');
 
     Route::get('/sell', [ItemController::class, 'create']);
     Route::post('/sell', [ItemController::class, 'store']);
@@ -79,13 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item}/address', [PurchaseController::class, 'editAddress'])
     ->name('purchase.address.edit');
 
-    Route::post('/purchase/{item}/address', [PurchaseController::class, 'updateAddress'])
+    Route::patch('/purchase/{item}/address', [PurchaseController::class, 'updateAddress'])
     ->name('purchase.address.update');
 
-    Route::get('/purchase/{item}/address', [PurchaseController::class, 'editAddress'])
-    ->name('purchase.address.edit');
-
-    //更新
-    Route::post('/purchase/{item}/address', [PurchaseController::class, 'updateAddress'])
-    ->name('purchase.address.update');
 });

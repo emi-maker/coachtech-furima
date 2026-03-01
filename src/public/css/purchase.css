@@ -1,26 +1,32 @@
+.purchase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .purchase-container {
     display: flex;
-    gap: 80px;
-    max-width: 1280px;
+    gap: 60px;
+    max-width: 1000px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
 .purchase-left {
-    flex: 3;
-    width: 100%;
+    flex: 1;
+}
 
+.purchase-left-inner {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 .purchase-right {
-    flex: 2;
-    margin-left: auto;
-    min-width: 350px;
+    width: 360px;
 }
 
 .summary-box {
     border: 1px solid #000000;
-    padding: 24px;
     width: 100%;
     background-color: #fff;
     
@@ -74,9 +80,6 @@
     margin-top: 15px;
 }
 
-.summary-box {
-    padding: 0;
-}
 
 .summary-row {
     padding: 24px;
