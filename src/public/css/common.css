@@ -127,3 +127,40 @@
     color: red;
     font-weight: bold;
 }
+
+.verify-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.verify-text {
+  margin-bottom: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.verify-button {
+  background-color: #ddd;
+  border: 1px solid #999;
+  padding: 10px 30px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  border-radius: 6px;
+ font-weight: bold;
+}
+
+.resend-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.resend-link {
+  margin-top: 10px;
+}

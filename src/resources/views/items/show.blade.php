@@ -80,7 +80,7 @@
                 <div class="comment-item">
                     <div class="comment-user-area">
                         <div class="user-icon">
-                        <img src="{{ asset('storage/' . $comment->user->profile_image) }}">
+                            <img src="{{ asset('storage/' . $comment->user->profile_image) }}">
                         </div>
                         <span class="user-name">
                             {{ $comment->user->name ?? 'ユーザー' }}
@@ -96,8 +96,15 @@
                 <div class="comment-form-area">
                     <h3 class="comment-form-title">商品へのコメント</h3>
                     <form action="{{ route('comments.store', $item->id) }}" method="POST">
+
+                        @error('content')
+                        <div style="color:red;">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         @csrf
                         <textarea name="content" class="comment-textarea" rows="5"></textarea>
+
                         <button type="submit" class="comment-submit">コメントを送信する</button>
                     </form>
                 </div>

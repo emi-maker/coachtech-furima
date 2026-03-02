@@ -3,6 +3,15 @@ body {
   background-color: white;
 }
 
+.mypage-title {
+  margin-top: 60px;
+}
+
+.mypage-card {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .mypage-card label {
   display: block;      /* 大事 */
   margin-bottom: 5px;
@@ -85,8 +94,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 500px;
-  margin: 50px auto;    
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 50px;    
 }
 
 
@@ -110,4 +120,8 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.profile-name {
+    white-space: nowrap;
 }

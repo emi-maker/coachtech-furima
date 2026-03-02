@@ -38,11 +38,19 @@
 
                 <div class="purchase-section">
                     <label>支払い方法</label>
-                    <select id="payment-select">
+
+                    <select id="payment-select" name="payment_method">
                         <option value="">選択してください</option>
                         <option value="convenience">コンビニ支払い</option>
                         <option value="card">カード支払い</option>
                     </select>
+
+                    @error('payment_method')
+                    <div style="color:red;">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                    
                 </div>
 
                 <div class="purchase-section">

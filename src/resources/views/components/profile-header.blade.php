@@ -5,9 +5,9 @@
             <img class="profile-image" src="{{ asset('storage/' . $user->profile_image) }}">
         </div>
 
-        <h2 class="profile-name">
+        <h1 class="profile-name">
             {{ $user->name }}
-        </h2>
+        </h1>
 
     </div>
 

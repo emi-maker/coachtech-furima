@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Models\Purchase;
+use App\Http\Requests\PurchaseRequest;
 
 class PurchaseController extends Controller
 {
@@ -14,7 +15,7 @@ class PurchaseController extends Controller
         return view('purchase.create', compact('item'));
     }
 
-    public function store(Request $request)
+    public function store(PurchaseRequest $request)
     {
         //購入履歴保存
         Purchase::create([
