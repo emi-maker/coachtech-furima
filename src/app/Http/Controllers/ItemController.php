@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Http\Requests\ExhibitionRequest;
+
 
 class ItemController extends Controller
 {
@@ -49,7 +51,7 @@ class ItemController extends Controller
         return view('sell',compact('categories','statuses'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
 
         $item = Item::create([

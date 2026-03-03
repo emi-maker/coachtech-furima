@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Purchase;
+use App\Http\Requests\ProfileRequest;
 
 class MypageController extends Controller
 {
@@ -16,7 +17,7 @@ class MypageController extends Controller
     }
 
     // 更新処理
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $user = auth()->user();
         /** @var \App\Models\User $user */

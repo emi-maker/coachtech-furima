@@ -7,16 +7,16 @@
 @section('content')
 
 
-<form action="{{ route('purchase.store', $item->id) }}" method="POST">
+<form action="/purchase/{{ $item->id }}" method="POST">
     @csrf
 
     <input type="hidden" name="item_id" value="{{ $item->id }}">
     <input type="hidden" name="payment_method" id="hidden-payment">
 
     <div class="purchase-container">
-
         {{-- 左 --}}
         <div class="purchase-left">
+
             <div class="purchase-left-inner">
 
                 <div class="purchase-item">
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="purchase-info">
-                        <h2>{{ $item->name }}</h2>
+                        <h1>{{ $item->name }}</h1>
                         <p>¥{{ number_format($item->price) }}</p>
                     </div>
                 </div>
@@ -43,65 +43,60 @@
                         <option value="">選択してください</option>
                         <option value="convenience">コンビニ支払い</option>
                         <option value="card">カード支払い</option>
-                    </select>
+                    </select>    
 
-                    @error('payment_method')
+                @error('payment_method')
                     <div style="color:red;">
                         {{ $message }}
                     </div>
-                    @enderror
-                    
+                @enderror
+            </div>
+            
+
+
+            <div class="purchase-section">
+                <div class="purchase-header">
+                    <label>配送先</label>
+                    <a href="{{ route('purchase.address.edit', $item->id) }}">
+                        変更する
+                    </a>
                 </div>
 
-                <div class="purchase-section">
-                    <div class="purchase-header">
-                        <label>配送先</label>
-                        <a href="{{ route('purchase.address.edit', $item->id) }}">
-                            送付先を変更する
-                        </a>
-                    </div>
-
-                    <p>
-                        〒 {{ session('shipping_postcode') ?: auth()->user()->post_code }}
-                    </p>
-                    <p>
-                        {{ session('shipping_address') ?? auth()->user()->address }}
-                    </p>
-                </div>
-
+                <p>
+                    〒 {{ session('shipping_postcode') ?: auth()->user()->post_code }}
+                </p>
+                <p>
+                {{ session('shipping_address') ?? auth()->user()->address }}
+                </p>
             </div>
         </div>
+    </diV>
 
-        {{-- 右 --}}
-        <div class="purchase-right">
 
-            <div class="summary-box">
-                <div class="summary-row">
-                    <p>商品代金 ¥{{ number_format($item->price) }}</p>
-                </div>
+    {{-- 右 --}}
+    <div class="purchase-right">
+    
 
-                <div class="summary-row">
-                    <span class="payment-label">支払い方法</span>
-                    <span id="payment-display">未選択</span>
-                </div>
+        <div class="summary-box">
+            <div class="summary-row">
+                <p>商品代金 ¥{{ number_format($item->price) }}</p>
             </div>
 
-            <button type="submit" class="purchase-button">
-                購入する
-            </button>
-
-        </div>
-
+            <div class="summary-row">
+                <span class="payment-label">支払い方法</span>
+                <span id="payment-display">未選択</span>
+            </div>
+        </div>  
+        <button type="submit" class="purchase-button">
+        購入する
+        </button>
     </div>
-
-</form>
 </div>
-</div>
-
 </form>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
     const select = document.getElementById("payment-select");
     const display = document.getElementById("payment-display");
@@ -122,6 +117,7 @@
     });
 
 });
-</script>
+    </script>
+</div>    
 
 @endsection

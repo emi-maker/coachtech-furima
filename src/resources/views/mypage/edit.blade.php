@@ -37,11 +37,19 @@
 
             <div class="form-group">
                 <label>郵便番号</label>
+
+                @error('post_code')
+                <div style="color:red;">{{ $message }}</div>
+                @enderror
+
                 <input type="text" name="post_code" value="{{ $user->post_code }}">
             </div>
 
             <div class="form-group">
                 <label>住所</label>
+                @error('address')
+                <div style="color:red;">{{ $message }}</div>
+                @enderror
                 <input type="text" name="address" value="{{ $user->address }}">
             </div>
 

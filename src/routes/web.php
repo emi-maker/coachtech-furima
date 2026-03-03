@@ -75,8 +75,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     ->name('purchase.store');
 
     //購入ボタン
-    Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
-    ->name('purchase.store');
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
 
     //住所・変更
     Route::get('/purchase/{item}/address', [PurchaseController::class, 'editAddress'])

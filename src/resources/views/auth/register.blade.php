@@ -7,7 +7,7 @@
 @section('content')
 <div class="auth-card">
     <h1>会員登録</h1>
-<form method="POST" action="/register">
+<form method="POST" action="/register" novalidate>
     @csrf
     <div class="form-group">
         <label>ユーザー名</label>
@@ -39,7 +39,7 @@
     <div class="form-group">
         <label>確認用パスワード</label>
 
-        @error('password')
+        @error('password_confirmation')
         <div style="color:red;">{{ $message }}</div>
         @enderror
         <input type="password" name="password_confirmation">

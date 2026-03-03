@@ -22,9 +22,12 @@ class ProfileRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+        {
         return [
-            'payment_method' => ['required'],
+           'name' => ['required', 'max:20'],
+            'post_code' => ['required', 'regex:/^\d{3}-\d{4}$/'],
+            'address' => ['required'],
+            'image' => ['nullable', 'mimes:jpeg,png'],
         ];
     }
 }
