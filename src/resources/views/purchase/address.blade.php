@@ -10,7 +10,7 @@
 
     <h1 class="address-title">住所変更</h1>
 
-    <form class= "addres-form" method="POST" action="{{ route('purchase.address.update', $item->id) }}">
+    <form class="addres-form" method="POST" action="/purchase/{{ $item->id }}/address">
         @csrf
         @method('PATCH') 
 

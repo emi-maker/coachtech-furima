@@ -21,7 +21,7 @@
         <div class="reaction-area">
             <div class="item-actions">
                 @auth
-                <form method="POST" action="{{ route('items.favorite', $item) }}">
+                <form method="POST" action="/items/{{ $item->id }}/favorite">
                     @csrf
                     <button type="submit" style="border:none; background:none;">
                         <div class="favorite-area">
@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('purchase.create', $item->id) }}" class="buy-button">
-                購入手続き
+            <a href="/purchase/{{ $item->id }}" class="buy-button">
+                購入手続きへ
             </a>
             <!-- ② 商品説明 -->
             <div class="item-description-block">
@@ -95,14 +95,15 @@
                 <!-- 入力エリア -->
                 <div class="comment-form-area">
                     <h3 class="comment-form-title">商品へのコメント</h3>
-                    <form action="{{ route('comments.store', $item->id) }}" method="POST">
+                    <form method="POST" action="items/{{ $item->id }}/comments">
+                        @csrf
 
                         @error('content')
                         <div style="color:red;">
                             {{ $message }}
                         </div>
                         @enderror
-                        @csrf
+
                         <textarea name="content" class="comment-textarea" rows="5"></textarea>
 
                         <button type="submit" class="comment-submit">コメントを送信する</button>

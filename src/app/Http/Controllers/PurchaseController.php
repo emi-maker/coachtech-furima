@@ -38,14 +38,14 @@ class PurchaseController extends Controller
         return view('purchase.address', compact('item'));
     }
 
-    public function updateAddress(Request $request, $itemId)
+    public function updateAddress(Request $request, $item)
     {
     session([
         'shipping_postcode' => $request->post_code,
         'shipping_address' => $request->address,
     ]);
 
-        return redirect()->route('purchase.create', $itemId);
+        return redirect()->route('purchase.create', $item);
     }
 
 }

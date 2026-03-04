@@ -24,14 +24,14 @@ use App\Http\Controllers\PurchaseController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/login', [LoginController::class, 'create']);
-Route::post('/login', [LoginController::class, 'store'])->name('login');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/item/{id}', [ItemController::class, 'show']);
+Route::get('/items/{item}', [ItemController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------
@@ -41,20 +41,15 @@ Route::get('/item/{id}', [ItemController::class, 'show']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // マイページ
-    Route::get('/mypage', [MypageController::class, 'index'])
-        ->name('mypage');
-
     Route::get('/sell', [ItemController::class, 'create']);
     Route::post('/sell', [ItemController::class, 'store']);
 
     Route::post('/items/{item}/favorite',
-    [ItemController::class, 'toggleFavorite']
-    )->name('items.favorite');
+    [ItemController::class, 'toggleFavorite']);
 
     Route::post('/items/{item}/comments',
     [CommentController::class, 'store']
-    )->name('comments.store');
+    );
 
    // マイページ
     Route::get('/mypage', [MypageController::class, 'index'])
@@ -68,20 +63,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/mypage/update', [MypageController::class, 'update']);
 
     // 購入画面表示
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])
-    ->name('purchase.create');
+    Route::get('/purchase/{item}', [PurchaseController::class, 'create'])->name('purchase.create');
 
-    Route::post('/purchase', [PurchaseController::class, 'store'])
-    ->name('purchase.store');
+    Route::post('/purchase', [PurchaseController::class, 'store']);
 
-    //購入ボタン
-    Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
 
     //住所・変更
-    Route::get('/purchase/{item}/address', [PurchaseController::class, 'editAddress'])
-    ->name('purchase.address.edit');
-
-    Route::patch('/purchase/{item}/address', [PurchaseController::class, 'updateAddress'])
-    ->name('purchase.address.update');
+    Route::patch('/purchase/{item}/address', [PurchaseController::class, 'updateAddress']);
 
 });

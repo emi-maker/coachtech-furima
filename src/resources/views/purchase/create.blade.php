@@ -7,7 +7,7 @@
 @section('content')
 
 
-<form action="/purchase/{{ $item->id }}" method="POST">
+<form action="/purchase" method="POST">
     @csrf
 
     <input type="hidden" name="item_id" value="{{ $item->id }}">

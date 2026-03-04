@@ -14,9 +14,9 @@ use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
-    public function show($id)
+    public function show($item)
     {
-        $item = Item::withCount(['favoritedUsers','comments'])->findOrFail($id);
+        $item = Item::withCount(['favoritedUsers','comments'])->findOrFail($item);
 
         $isFavorite = auth()->check()
         ? auth()->user()->favorites->contains($item->id)
