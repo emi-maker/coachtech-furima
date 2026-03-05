@@ -21,7 +21,7 @@
         <div class="reaction-area">
             <div class="item-actions">
                 @auth
-                <form method="POST" action="/items/{{ $item->id }}/favorite">
+                <form method="POST" action="/item/{{ $item->id }}/favorite">
                     @csrf
                     <button type="submit" style="border:none; background:none;">
                         <div class="favorite-area">
@@ -95,7 +95,7 @@
                 <!-- 入力エリア -->
                 <div class="comment-form-area">
                     <h3 class="comment-form-title">商品へのコメント</h3>
-                    <form method="POST" action="items/{{ $item->id }}/comments">
+                    <form method="POST" action="/item/{{ $item->id }}/comments">
                         @csrf
 
                         @error('content')

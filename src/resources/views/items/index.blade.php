@@ -20,7 +20,7 @@
     @foreach($items as $item)
     <div class="col-md-3">
         <div class="card">
-            <a href="/items/{{ $item->id }}" class="card-link">
+            <a href="/item/{{ $item->id }}" class="card-link">
                 <div class="card-image">
                    @if($item->img)
                         @if(str_starts_with($item->img, 'http'))

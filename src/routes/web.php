@@ -31,7 +31,7 @@ Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/items/{item}', [ItemController::class, 'show']);
+Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +44,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/sell', [ItemController::class, 'create']);
     Route::post('/sell', [ItemController::class, 'store']);
 
-    Route::post('/items/{item}/favorite',
-    [ItemController::class, 'toggleFavorite']);
+    Route::post('/item/{item_id}/favorite', [ItemController::class, 'toggleFavorite']);
 
-    Route::post('/items/{item}/comments',
+    Route::post('/item/{item_id}/comments',
     [CommentController::class, 'store']
     );
 
-   // マイページ
+    // マイページ
     Route::get('/mypage', [MypageController::class, 'index'])
     ->name('mypage');
 
@@ -63,12 +62,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/mypage/update', [MypageController::class, 'update']);
 
     // 購入画面表示
-    Route::get('/purchase/{item}', [PurchaseController::class, 'create'])->name('purchase.create');
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase.create');
 
     Route::post('/purchase', [PurchaseController::class, 'store']);
 
+    Route::get('/purchase/address/{item}',
+    [PurchaseController::class, 'editAddress'])
+    ->name('purchase.address.edit');
 
     //住所・変更
-    Route::patch('/purchase/{item}/address', [PurchaseController::class, 'updateAddress']);
+    Route::patch('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
 
 });

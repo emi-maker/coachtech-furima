@@ -10,7 +10,7 @@
 
     <h1 class="address-title">住所変更</h1>
 
-    <form class="addres-form" method="POST" action="/purchase/{{ $item->id }}/address">
+    <form class="address-form" method="POST" action="/purchase/address/{{ $item->id }}">
         @csrf
         @method('PATCH') 
 

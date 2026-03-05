@@ -14,9 +14,9 @@ use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
-    public function show($item)
+    public function show($item_id)
     {
-        $item = Item::withCount(['favoritedUsers','comments'])->findOrFail($item);
+        $item = Item::withCount(['favoritedUsers','comments'])->findOrFail($item_id);
 
         $isFavorite = auth()->check()
         ? auth()->user()->favorites->contains($item->id)
@@ -39,7 +39,7 @@ class ItemController extends Controller
         $items = Item::withCount('favoritedUsers')->get();
     }
 
-    return view('items.index', compact('items'));
+        return view('items.index', compact('items'));
     }
 
    
@@ -81,11 +81,11 @@ class ItemController extends Controller
         ->toJpeg(80);
 
         Storage::disk('public')->put(
-        'items/' . $filename,
+        'item/' . $filename,
         (string) $image
         );
 
-        $item->img = 'items/' . $filename;
+        $item->img = 'item/' . $filename;
         $item->save();
     }
 
