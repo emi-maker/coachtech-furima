@@ -33,11 +33,20 @@ class ItemController extends Controller
         $items = Item::withCount('favoritedUsers')
             ->whereHas('favoritedUsers', function ($query) {
                 $query->where('user_id', auth()->id());
-            })->get();
+            });
 
     } else {
-        $items = Item::withCount('favoritedUsers')->get();
+
+        $items = Item::withCount('favoritedUsers');
     }
+
+     // 商品名検索
+    if ($request->keyword) {
+        $items->where('name', 'like', '%' . $request->keyword . '%');
+    }
+
+    $items = $items->get();
+
 
         return view('items.index', compact('items'));
     }
@@ -92,12 +101,12 @@ class ItemController extends Controller
         return redirect('/');
     }
 
-    public function toggleFavorite(Item $item)
+    public function toggleFavorite(Item $item_id)
     {
         /** @var \App\Models\User $user */
         $user = auth()->user();
 
-        $user->favorites()->toggle($item);
+        $user->favorites()->toggle($item_id);
         
         return back();
     }

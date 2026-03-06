@@ -61,14 +61,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // 更新処理
     Route::patch('/mypage/update', [MypageController::class, 'update']);
 
+    Route::get('/purchase/success', [PurchaseController::class, 'success']);
+
     // 購入画面表示
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase.create');
 
     Route::post('/purchase', [PurchaseController::class, 'store']);
 
+    //決済画面
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
+
     Route::get('/purchase/address/{item}',
     [PurchaseController::class, 'editAddress'])
     ->name('purchase.address.edit');
+
 
     //住所・変更
     Route::patch('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
