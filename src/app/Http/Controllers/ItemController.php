@@ -27,29 +27,45 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        //タブ
-        if ($request->tab === 'mylist' && auth()->check()) {
+        // マイリストタブ
+        if ($request->tab === 'mylist') {
 
-        $items = Item::withCount('favoritedUsers')
+            if (!auth()->check()) {
+            $items = collect(); // 未ログインなら空
+            } else {
+        
+            $query = Item::withCount('favoritedUsers')
             ->whereHas('favoritedUsers', function ($query) {
                 $query->where('user_id', auth()->id());
             });
 
+            if ($request->keyword) { $query->where('name', 'like', '%' . $request->keyword . '%'); 
+            }
+
+            $items = $query->get();
+
+        }
+
     } else {
 
-        $items = Item::withCount('favoritedUsers');
+        $query = Item::withCount('favoritedUsers');
+
+        if (auth()->check()) {
+            $query->where('user_id', '!=', auth()->id());
+        }
+
+
+        if ($request->keyword) {
+            $query->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
+        $items = $query->get();
     }
 
-     // 商品名検索
-    if ($request->keyword) {
-        $items->where('name', 'like', '%' . $request->keyword . '%');
+
+    return view('items.index', compact('items'));
     }
 
-    $items = $items->get();
-
-
-        return view('items.index', compact('items'));
-    }
 
    
     public function create()
@@ -90,11 +106,11 @@ class ItemController extends Controller
         ->toJpeg(80);
 
         Storage::disk('public')->put(
-        'item/' . $filename,
+        'items/' . $filename,
         (string) $image
         );
 
-        $item->img = 'item/' . $filename;
+        $item->img = 'items/' . $filename;
         $item->save();
     }
 

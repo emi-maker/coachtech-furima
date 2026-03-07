@@ -38,7 +38,7 @@ class ItemsTableSeeder extends Seeder
         [
             'user_id' => 2,
             'name' => '玉ねぎ３束',
-            'price' => 5000,
+            'price' => 300,
             'brand' => 'なし',
             'description' => '新鮮な玉ねぎ３束セット',
             'img' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
