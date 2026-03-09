@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->integer('price')->unsigned();
             $table->text('description');
             $table->unsignedBigInteger('user_id');
-            $table->string('img', 255)->nullable();
+            $table->string('img', 255);
             $table->string('brand', 255)->nullable();
             $table->unsignedBigInteger('status_id');
             $table->unsignedBigInteger('buyer_id')->nullable();

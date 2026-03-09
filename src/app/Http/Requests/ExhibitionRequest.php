@@ -26,6 +26,7 @@ class ExhibitionRequest extends FormRequest
         return [
             'name' => ['required'],
             'description' => ['required', 'max:255'],
+            'brabd'=> ['nullable', 'string', 'max:255'],
             'img' => ['required', 'mimes:jpeg,png'],
             'categories' => ['required'],
             'status_id' => ['required'],

@@ -95,13 +95,13 @@ class ItemController extends Controller
         // 画像追加
         if ($request->hasFile('img')) {
 
-        $uplodeedImage = $request->file('img');
+        $uplodedImage = $request->file('img');
 
         $filename = uniqid() . '.jpg';
 
         $manager = new ImageManager(new Driver());
 
-        $image = $manager->read($uplodeedImage)
+        $image = $manager->read($uplodedImage)
         ->scale(width: 1200)
         ->toJpeg(80);
 
