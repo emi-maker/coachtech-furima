@@ -57,16 +57,19 @@
             <div class="purchase-section">
                 <div class="purchase-header">
                     <label>配送先</label>
-                    <a href="{{ route('purchase.address.edit', $item->id) }}">
+                    <a href="/purchase/address/{{  $item->id }}">
                         変更する
                     </a>
                 </div>
 
                 <p>
-                    〒 {{ session('shipping_postcode') ?: auth()->user()->post_code }}
+                〒 {{ session('shipping_postcode') ?? auth()->user()->post_code }}
                 </p>
                 <p>
                 {{ session('shipping_address') ?? auth()->user()->address }}
+                </p>
+                <p>
+                {{ session()->has('shipping_building') ? session('shipping_building'): auth()->user()->building }}
                 </p>
             </div>
         </div>

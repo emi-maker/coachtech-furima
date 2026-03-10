@@ -36,7 +36,7 @@ class ItemsTableSeeder extends Seeder
             'categories' => [3],
         ],
         [
-            'user_id' => 2,
+            'user_id' => 1,
             'name' => '玉ねぎ３束',
             'price' => 300,
             'brand' => 'なし',

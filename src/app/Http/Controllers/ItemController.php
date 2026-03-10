@@ -76,46 +76,41 @@ class ItemController extends Controller
         return view('sell',compact('categories','statuses'));
     }
 
-    public function store(ExhibitionRequest $request)
-    {
+        public function store(ExhibitionRequest $request)
+        {
 
-        $item = Item::create([
+        $filename = null;
+
+        if ($request->hasFile('img')) {
+
+            $uplodedImage = $request->file('img');
+
+            $filename = uniqid() . '.jpg';
+
+            $manager = new ImageManager(new Driver());
+
+            $image = $manager->read($uplodedImage)
+            ->scale(width: 1200)
+            ->toJpeg(80);
+
+            Storage::disk('public')->put(
+                'items/' . $filename,
+                (string) $image
+            );
+        }
+
+        Item::create([
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
             'brand' => $request->brand,
+            'img' => 'items/' . $filename,
             'user_id' => auth()->id(),
             'status_id' => $request->status_id,
-    ]);
-        //カテゴリー紐づけ
-        if ($request->has('categories')) {
-            $item->categories()->attach($request->categories);
-    }
+        ]);
 
-        // 画像追加
-        if ($request->hasFile('img')) {
-
-        $uplodedImage = $request->file('img');
-
-        $filename = uniqid() . '.jpg';
-
-        $manager = new ImageManager(new Driver());
-
-        $image = $manager->read($uplodedImage)
-        ->scale(width: 1200)
-        ->toJpeg(80);
-
-        Storage::disk('public')->put(
-        'items/' . $filename,
-        (string) $image
-        );
-
-        $item->img = 'items/' . $filename;
-        $item->save();
-    }
-
-        return redirect('/');
-    }
+            return redirect('/');
+        }
 
     public function toggleFavorite(Item $item_id)
     {

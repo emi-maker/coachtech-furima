@@ -72,6 +72,7 @@ class PurchaseController extends Controller
     session([
         'shipping_postcode' => $request->post_code,
         'shipping_address' => $request->address,
+        'shipping_building' => $request->building ?? '',
     ]);
 
         return redirect()->route('purchase.create', $item);
