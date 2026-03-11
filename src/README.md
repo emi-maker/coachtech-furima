@@ -18,12 +18,14 @@
 2. composer install 3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
 3. .envに以下の環境変数を追加
 
-`DB_CONNECTION=mysql`
-`DB_HOST=mysql`
-`DB_PORT=3306`
-`DB_DATABASE=laravel_db`
-`DB_USERNAME=laravel_user`
-`DB_PASSWORD=laravel_pass`
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+```
 
 5.アプリケーションキーの作成
 `php artisan key:generate`
@@ -72,10 +74,9 @@ Laravelの学習のためにフリマアプリを作成しました。
 
 ## テーブル仕様書
 
-［テーブル仕様書］（Googleスプレッドシート）
-https://docs.google.com/spreadsheets/d/1sYa-KjGIGMOXZ0esn_Y6ehyRDO5PhWUPTbimvR6IoaA/edit?gid=1188247583#gid=1188247583
+[テーブル仕様書（Googleスプレッドシート)](URL)(https://docs.google.com/spreadsheets/d/1sYa-KjGIGMOXZ0esn_Y6ehyRDO5PhWUPTbimvR6IoaA/edit?gid=1188247583#gid=1188247583)
 
 ## URL
 
-開発環境：http://localhost
-phpMyAdmin：http://localhost:8080/
+- 開発環境：http://localhost
+- phpMyAdmin：http://localhost:8080/
