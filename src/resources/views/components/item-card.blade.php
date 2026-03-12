@@ -1,6 +1,6 @@
 <div class="card">
 
-    <a href="{{ url('/item/' . $item->id) }}" class="card-link">
+    <a href="/item{{ $item->id }}" class="card-link">
 
         <div class="card-image">
             @if($item->img)

@@ -11,7 +11,7 @@
 
     </div>
 
-    <a href="{{ route('mypage.profile.edit') }}" class="image-select-btn">
+    <a href="/'mypage/profile" class="image-select-btn">
     プロフィールを編集する
     </a>
     

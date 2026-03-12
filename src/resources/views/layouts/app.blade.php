@@ -30,7 +30,7 @@
             @endguest
 
             @auth
-            <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+            <form method="POST" action="/logout" style="display:inline;">
                 @csrf
                 <button type="submit" class="logout-link">ログアウト</button>
             </form>

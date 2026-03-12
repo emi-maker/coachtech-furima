@@ -35,10 +35,10 @@ class PurchaseController extends Controller
         ],
         'quantity' => 1,
     ]],
-    'mode' => 'payment',
-    'success_url' => url('/purchase/success?item_id=' . $request->item_id),
-    'cancel_url' => url()->previous(),
-    ]);
+        'mode' => 'payment',
+        'success_url' => url('/purchase/success?item_id=' . $request->item_id),
+        'cancel_url' => url('/purchase/' . $request->item_id),
+        ]);
 
     return redirect($session->url);
     }
@@ -75,7 +75,6 @@ class PurchaseController extends Controller
         'shipping_building' => $request->building ?? '',
     ]);
 
-        return redirect()->route('purchase.create', $item);
+        return redirect('/purchase/' . $item);
     }
-
 }

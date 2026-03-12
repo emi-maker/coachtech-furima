@@ -51,12 +51,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     );
 
     // マイページ
-    Route::get('/mypage', [MypageController::class, 'index'])
-    ->name('mypage');
+    Route::get('/mypage', [MypageController::class, 'index']);
 
     // 編集画面表示
-    Route::get('/mypage/profile', [MypageController::class, 'edit'])
-    ->name('mypage.profile.edit');
+    Route::get('/mypage/profile', [MypageController::class, 'edit']);
+   
 
     // 更新処理
     Route::patch('/mypage/update', [MypageController::class, 'update']);
@@ -75,7 +74,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
 
     // 購入画面表示
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase.create');
-
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'create']);
 
 });
