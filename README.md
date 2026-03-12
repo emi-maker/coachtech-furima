@@ -103,7 +103,7 @@ Laravelの学習のためにフリマアプリを作成しました。ユーザ�
 
 ## ER図
 
-![ER図](docs/er-diagram.png)
+![ER図](src/docs/er-diagram.png)
 
 ## テーブル仕様書
 
