@@ -11,7 +11,7 @@
 
 **DockerDesktopアプリを立ち上げる**
 ```bash
-`docker-compose up -d`
+docker-compose up -d
 ``` 
 
 **Laravel環境構築**
