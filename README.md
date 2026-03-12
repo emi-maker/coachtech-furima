@@ -10,7 +10,9 @@
 2. cd coachtech-furima
 
 **DockerDesktopアプリを立ち上げる**
-`docker-compose up -d`  
+```bash
+`docker-compose up -d`
+``` 
 
 **Laravel環境構築**
 
@@ -27,6 +29,7 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
+<<<<<<< HEAD:README.md
 5.アプリケーションキーの作成  
 `php artisan key:generate`  
 
@@ -46,6 +49,31 @@ DB_PASSWORD=laravel_pass
 ・HTML  
 ・CSS
 
+5.アプリケーションキーの作成
+```bash
+`php artisan key:generate`
+```  
+
+6.マイグレーションの実行
+```bash
+`php artisan migrate`
+```  
+
+7.シーディングの実行
+```bash
+`php artisan db:seed`
+``` 
+
+## 使用技術
+
+- Laravel  
+- PHP  
+- MySQL  
+- Docker
+- Nginx    
+- HTML  
+- CSS
+
 ## アプリ概要
 
 ユーザーが商品を出品・購入できるフリマアプリです。
@@ -53,11 +81,11 @@ DB_PASSWORD=laravel_pass
 
 ## 作成した目的
 
-Laravelの学習のためにフリマアプリを作成しました。
-ユーザー登録、商品出品、商品購入などの機能を実装しています。
+Laravelの学習のためにフリマアプリを作成しました。ユーザー登録、商品出品、商品購入などの機能を実装しています。
 
 ## 主な機能
 
+<<<<<<< HEAD:README.md
 ・会員登録  
 ・ログイン機能  
 ・商品一覧表示  
@@ -67,6 +95,17 @@ Laravelの学習のためにフリマアプリを作成しました。
 ・カテゴリ機能  
 ・お気に入り機能   
 ・プロフィール編集
+
+- 会員登録  
+- ログイン機能  
+- 商品一覧表示  
+- 商品出品  
+- 商品購入
+- コメント機能  
+- カテゴリ機能  
+- お気に入り機能   
+- プロフィール編集
+>>>>>>> b0e55a57dbbc5334f552e3b3c437785aa4f1df2b:src/README.md
 
 ## ER図
 
