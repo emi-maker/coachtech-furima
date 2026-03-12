@@ -29,14 +29,20 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-5.アプリケーションキーの作成  
-`php artisan key:generate`  
+5.アプリケーションキーの作成
+```bash
+php artisan key:generate
+``` 
 
-6.マイグレーションの実行  
-`php artisan migrate`  
+6.マイグレーションの実行 
+```bash
+php artisan migrate
+``` 
 
-7.シーディングの実行  
-`php artisan db:seed`  
+7.シーディングの実行
+```bash
+php artisan db:seed
+``` 
 
 ## 使用技術
 
@@ -50,17 +56,17 @@ DB_PASSWORD=laravel_pass
 
 5.アプリケーションキーの作成
 ```bash
-`php artisan key:generate`
+php artisan key:generate
 ```  
 
 6.マイグレーションの実行
 ```bash
-`php artisan migrate`
+php artisan migrate
 ```  
 
 7.シーディングの実行
 ```bash
-`php artisan db:seed`
+php artisan db:seed
 ``` 
 
 ## 使用技術
