@@ -27,13 +27,13 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-5.アプリケーションキーの作成
+5.アプリケーションキーの作成  
 `php artisan key:generate`  
 
-6.マイグレーションの実行
+6.マイグレーションの実行  
 `php artisan migrate`  
 
-7.シーディングの実行
+7.シーディングの実行  
 `php artisan db:seed`  
 
 ## 使用技術
@@ -41,7 +41,7 @@ DB_PASSWORD=laravel_pass
 ・Laravel  
 ・PHP  
 ・MySQL  
-・Docker
+・Docker  
 ・Nginx    
 ・HTML  
 ・CSS
@@ -62,7 +62,7 @@ Laravelの学習のためにフリマアプリを作成しました。
 ・ログイン機能  
 ・商品一覧表示  
 ・商品出品  
-・商品購入
+・商品購入  
 ・コメント機能  
 ・カテゴリ機能  
 ・お気に入り機能   
