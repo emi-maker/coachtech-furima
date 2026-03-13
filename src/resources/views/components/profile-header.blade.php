@@ -11,8 +11,8 @@
 
     </div>
 
-    <a href="/'mypage/profile" class="image-select-btn">
-    プロフィールを編集する
+    <a href="/mypage/profile" class="image-select-btn">
+        プロフィールを編集する
     </a>
-    
-    </div>
+
+</div>

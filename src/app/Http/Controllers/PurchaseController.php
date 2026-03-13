@@ -40,8 +40,8 @@ class PurchaseController extends Controller
         'cancel_url' => url('/purchase/' . $request->item_id),
         ]);
 
-    return redirect($session->url);
-    }
+        return redirect($session->url);
+        }
 
     public function success(Request $request)
     {
@@ -51,6 +51,10 @@ class PurchaseController extends Controller
         'user_id' => auth()->id(),
         'item_id' => $request->item_id,
         'payment_method' => $request->payment_method,
+
+        'shipping_postcode' => session('shipping_postcode') ?? auth()->user()->post_code,
+        'shipping_address' => session('shipping_address') ?? auth()->user()->address,
+        'shipping_name' => session('shipping_building') ?? auth()->user()->building,
         ]);
 
     // 商品をSOLDにする
@@ -59,8 +63,8 @@ class PurchaseController extends Controller
         $item->buyer_id = auth()->id();
         $item->save();
 
-    return redirect('/mypage');
-    }
+        return redirect('/');
+        }
 
     public function editAddress(Item $item)
     {

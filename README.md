@@ -105,6 +105,18 @@ Laravelの学習のためにフリマアプリを作成しました。ユーザ�
 
 ![ER図](src/docs/er-diagram.png)
 
+## 配送先住所の保存について
+
+本アプリでは、購入ごとに配送先住所を保持する仕様としています。
+そのため purchases テーブルに以下のカラムを追加しています。
+
+* shipping_postcode
+* shipping_address
+* shipping_name（建物名として使用）
+
+カラム名について再設計の余地がありますが、提出時点では既存機能への影響を考慮し現状の構成としています。
+
+
 ## テーブル仕様書
 
 [テーブル仕様書（Googleスプレッドシート)](https://docs.google.com/spreadsheets/d/1sYa-KjGIGMOXZ0esn_Y6ehyRDO5PhWUPTbimvR6IoaA/edit?gid=1188247583#gid=1188247583)

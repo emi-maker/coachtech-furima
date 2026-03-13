@@ -71,6 +71,12 @@
                 <p>
                 {{ session()->has('shipping_building') ? session('shipping_building'): auth()->user()->building }}
                 </p>
+
+                <input type="hidden" name="shipping_address" value="{{ session('shipping_address') ?? auth()->user()->address }}">
+                
+                <input type="hidden" name="shipping_postcode" value="{{ session('shipping_postcode') ?? auth()->user()->post_code }}">
+                
+                <input type="hidden" name="shipping_building" value="{{ session('shipping_building') ?? auth()->user()->building }}">
             </div>
         </div>
     </diV>
