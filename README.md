@@ -16,9 +16,10 @@ docker-compose up -d
 
 **Laravel環境構築**
 
-1. docker-compose exec php bash
-2. composer install 3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-3. .envに以下の環境変数を追加
+1. `docker-compose exec php bash`
+2. `composer install`
+3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
+4. .envに以下の環境変数を追加
 
 ```bash
 DB_CONNECTION=mysql
@@ -44,30 +45,6 @@ php artisan migrate
 php artisan db:seed
 ``` 
 
-## 使用技術
-
-・Laravel  
-・PHP  
-・MySQL  
-・Docker  
-・Nginx    
-・HTML  
-・CSS
-
-5.アプリケーションキーの作成
-```bash
-php artisan key:generate
-```  
-
-6.マイグレーションの実行
-```bash
-php artisan migrate
-```  
-
-7.シーディングの実行
-```bash
-php artisan db:seed
-``` 
 
 ## 使用技術
 
@@ -84,9 +61,6 @@ php artisan db:seed
 ユーザーが商品を出品・購入できるフリマアプリです。
 商品へのコメントやお気に入り登録、カテゴリ分類などの機能を実装しています。
 
-## 作成した目的
-
-Laravelの学習のためにフリマアプリを作成しました。ユーザー登録、商品出品、商品購入などの機能を実装しています。
 
 ## 主な機能
 
